@@ -42,7 +42,7 @@ export default function CommentSection({comments, onAddComment}: Props) {
 
   return (
     <div className="mt-3">
-      <div className="space-y-2 mb-2">
+      <div className="space-y-3 mb-3">
         {visibleComments.map((c) => (
           <div key={c.id} className="text-sm">
             <div>

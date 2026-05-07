@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# X-Style Social Feed (Next.js + TypeScript + Tailwind)
 
-## Getting Started
+Twitter/X-style social feed built with **Next.js**, **TypeScript**, and **Tailwind CSS**.  
+This project focuses on clean UI, component architecture, comment threads, posting interactions, and scalable state management.  
+Built as a high‑quality front‑end showcase with senior‑level attention to detail.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 📝 Posting
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Create new posts using a modern composer
+- Auto-scroll to top after posting
+- Character counter
+- Auto-resizing input
+- Clean UI with focus/hover states
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 💬 Comments & Replies
 
-## Learn More
+- Post comments with Enter key
+- Reply to any comment
+- Inline reply mention insertion (`@username`)
+- Expand/collapse long comment threads
+- Local like counters for comments
+- Smooth spacing & transitions
 
-To learn more about Next.js, take a look at the following resources:
+### ❤️ Likes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Like/unlike posts
+- Optimistic UI updates
+- Clean button interactions and hover states
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🧱 Feed Structure
 
-## Deploy on Vercel
+- Scrollable feed (header + composer stay fixed)
+- Mock posts with nested comments/replies
+- Modern Twitter/X card layout
+- Polished typography hierarchy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 👤 Mentioning Users (WIP)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Inline detection for `@username`
+- Future autocomplete dropdown support
+- Utility for rendering highlighted mentions
+
+### 🎨 UI Polish
+
+- Sticky blurred header
+- Smooth background
+- Scrollbar styling
+- Buttons with Tailwind transitions
+- Spacing tuned for readability
+
+---
+
+## 🛠️ Tech Stack
+
+- **Next.js 14+ (App Router)**
+- **TypeScript**
+- **Tailwind CSS**
+- **UUID** for IDs
+- **Lucide Icons**
+- **Local Mock Data**
+- Optional (recommended for real backend):
+  - **Zustand** for UI state
+  - **React Query (TanStack Query)** for server-side data
+
+---
+
+## 📁 Project Structure

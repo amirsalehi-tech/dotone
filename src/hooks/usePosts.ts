@@ -1,5 +1,4 @@
 import {useState} from "react";
-
 import {v4 as uuid} from "uuid";
 import {Post} from "../types/post";
 import {mockPosts} from "../data/mockPosts";
@@ -35,6 +34,7 @@ export function usePosts() {
     );
   };
 
+  // ✅ FIXED: comment must include replies: []
   const addComment = (postId: string, text: string) => {
     setPosts((prev) =>
       prev.map((p) =>
@@ -43,7 +43,12 @@ export function usePosts() {
               ...p,
               comments: [
                 ...p.comments,
-                {id: uuid(), username: "you", content: text},
+                {
+                  id: uuid(),
+                  username: "you",
+                  content: text,
+                  replies: [], // <-- REQUIRED NOW
+                },
               ],
             }
           : p,
@@ -51,5 +56,32 @@ export function usePosts() {
     );
   };
 
-  return {posts, addPost, toggleLike, addComment};
+  const addReply = (postId: string, commentId: string, text: string) => {
+    setPosts((prev) =>
+      prev.map((post) =>
+        post.id === postId
+          ? {
+              ...post,
+              comments: post.comments.map((comment) =>
+                comment.id === commentId
+                  ? {
+                      ...comment,
+                      replies: [
+                        ...comment.replies,
+                        {
+                          id: uuid(),
+                          username: "you",
+                          content: text,
+                        },
+                      ],
+                    }
+                  : comment,
+              ),
+            }
+          : post,
+      ),
+    );
+  };
+
+  return {posts, addPost, toggleLike, addComment, addReply};
 }

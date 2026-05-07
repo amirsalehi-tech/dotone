@@ -3,6 +3,7 @@
 import {Post} from "@/src/types/post";
 import Image from "next/image";
 import CommentSection from "./CommentSection";
+import {renderTextWithMentions} from "@/src/utils/helpers";
 
 interface Props {
   post: Post;
@@ -25,9 +26,8 @@ export default function PostCard({post, onLike, onComment}: Props) {
         <div className="font-semibold">{post.username}</div>
 
         <p className="mt-1 whitespace-pre-wrap wrap-break-words break-all w-full">
-          {post.content}
+          {renderTextWithMentions(post.content)}
         </p>
-
         <div className="flex gap-6 mt-2 text-gray-500 text-sm">
           <button
             className="hover:text-red-500 transition flex items-center gap-1"
