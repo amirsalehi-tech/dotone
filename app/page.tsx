@@ -23,7 +23,7 @@ export default function Home() {
   };
 
   return (
-    <main className="h-screen bg-gray-50">
+    <main className="h-screen bg-gray-50 dark:bg-gray-900 dark:text-gray-200">
       <div className="mx-auto max-w-2xl border-x border-gray-200 bg-white h-full flex flex-col">
         {/* Header */}
         <Header />
@@ -38,7 +38,10 @@ export default function Home() {
           />
         </section>
 
-        <section ref={feedRef} className="flex-1 overflow-y-auto">
+        <section
+          ref={feedRef}
+          className="flex-1 overflow-y-auto thin-scrollbar"
+        >
           <Feed posts={posts} onLike={toggleLike} onComment={addComment} />
         </section>
       </div>

@@ -34,7 +34,6 @@ export function usePosts() {
     );
   };
 
-  // ✅ FIXED: comment must include replies: []
   const addComment = (postId: string, text: string) => {
     setPosts((prev) =>
       prev.map((p) =>
@@ -47,7 +46,7 @@ export function usePosts() {
                   id: uuid(),
                   username: "you",
                   content: text,
-                  replies: [], // <-- REQUIRED NOW
+                  replies: [],
                 },
               ],
             }

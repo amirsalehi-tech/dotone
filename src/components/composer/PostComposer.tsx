@@ -25,7 +25,7 @@ export default function PostComposer({onPost}: Props) {
   };
 
   return (
-    <div className="flex gap-3 p-4 border-b border-gray-200">
+    <div className="flex gap-3 p-4 border-b border-gray-200 dark:border-gray-900 dark:bg-gray-800">
       <Image
         src="/images/p3.jpeg"
         alt="User avatar"

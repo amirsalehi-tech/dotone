@@ -13,7 +13,7 @@ interface Props {
 
 export default function PostCard({post, onLike, onComment}: Props) {
   return (
-    <div className="flex gap-3 p-4 border-b hover:bg-gray-50 transition">
+    <div className="flex gap-3 p-4 border-b dark:border-b-white-50  transition dark:bg-gray-800">
       <Image
         src={post.avatar}
         alt={post.username}

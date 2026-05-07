@@ -91,7 +91,7 @@ export default function CommentSection({comments, onAddComment}: Props) {
             focus:bg-white
             focus:border-blue-500
             focus:ring-2 focus:ring-blue-500/40
-            outline-none transition
+            outline-none transition dark:bg-gray-700 dark:placeholder:text-white
           "
         />
         <p className="text-[11px] text-gray-500 mt-1 pl-3">
