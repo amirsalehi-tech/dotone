@@ -4,6 +4,8 @@ Twitter/X-style social feed built with **Next.js**, **TypeScript**, and **Tailwi
 This project focuses on clean UI, component architecture, comment threads, posting interactions, and scalable state management.  
 Built as a high‑quality front‑end showcase with senior‑level attention to detail.
 
+for setup clone this project run npm install, then npm run dev
+
 ---
 
 ## ✨ Features
