@@ -14,13 +14,13 @@ export default function Header() {
       />
 
       <div className="flex items-center gap-2">
-        <button className="rounded-full p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-900">
+        <button className="rounded-full p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 cursor-pointer">
           <Search className="h-5 w-5" />
         </button>
-        <button className="rounded-full p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-900">
+        <button className="rounded-full p-2 text-gray-500 transition hover:bg-gray-100 hover:text-gray-900 cursor-pointer">
           <Bell className="h-5 w-5" />
         </button>
-        <button className="rounded-full p-2 text-gray-500 transition hover:bg-blue-50 hover:text-blue-600">
+        <button className="rounded-full p-2 text-gray-500 transition hover:bg-blue-50 hover:text-blue-600 cursor-pointer">
           <SquarePen className="h-5 w-5" />
         </button>
       </div>
