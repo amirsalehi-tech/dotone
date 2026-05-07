@@ -11,7 +11,7 @@ export function usePosts() {
     const newPost: Post = {
       id: uuid(),
       username: "you",
-      avatar: "https://i.pravatar.cc/40",
+      avatar: "/images/p3.jpeg",
       content,
       likes: 0,
       liked: false,
