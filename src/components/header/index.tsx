@@ -1,8 +1,9 @@
 "use client";
 
 import {useTheme} from "@/src/hooks/useTheme";
-import {Bell, Search, Sun, Moon} from "lucide-react";
+import {Search, Sun, Moon} from "lucide-react";
 import Image from "next/image";
+import NotificationBell from "../notification/Notification";
 
 export default function Header() {
   const {theme, toggleTheme} = useTheme();
@@ -18,14 +19,15 @@ export default function Header() {
       />
 
       <div className="flex items-center gap-2">
+        {/* Search */}
         <button className="rounded-full p-2 text-gray-500 dark:text-gray-300 transition hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer">
           <Search className="h-5 w-5" />
         </button>
 
-        <button className="rounded-full p-2 text-gray-500 dark:text-gray-300 transition hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer">
-          <Bell className="h-5 w-5" />
-        </button>
+        {/* Notifications */}
+        <NotificationBell />
 
+        {/* Theme toggle */}
         <button
           onClick={toggleTheme}
           className="rounded-full p-2 text-gray-500 dark:text-gray-300 transition hover:bg-blue-50 dark:hover:bg-gray-800 cursor-pointer"

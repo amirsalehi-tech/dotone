@@ -24,8 +24,15 @@ export default function CommentItem({
   const replies = comment.replies ?? [];
   const hasReplies = replies.length > 0;
 
+  const elementId =
+    level === 0 ? `comment-${comment.id}` : `reply-${comment.id}`;
+
   return (
-    <div className={`mt-4 relative`} style={{paddingLeft: level * 16}}>
+    <div
+      id={elementId}
+      className="mt-4 relative"
+      style={{paddingLeft: level * 16}}
+    >
       {/* Thread Line */}
       {level > 0 && (
         <div className="absolute left-0 top-0 h-full w-px bg-gray-300/40 dark:bg-gray-700/50" />
@@ -64,7 +71,7 @@ export default function CommentItem({
           <div
             className={`
               overflow-hidden transition-all duration-300 ease-in-out
-              ${expanded ? "max-h-500 opacity-100 mt-3" : "max-h-0 opacity-0"}
+              ${expanded ? "max-h-125 opacity-100 mt-3" : "max-h-0 opacity-0"}
             `}
           >
             {replies.map((reply) => (

@@ -5,6 +5,7 @@ import Image from "next/image";
 import CommentSection from "../comment";
 import {renderTextWithMentions} from "@/src/utils/helpers";
 import {countComments} from "@/src/utils/commentCount";
+import Button from "../ui/button/Button";
 
 interface Props {
   post: Post;
@@ -14,7 +15,10 @@ interface Props {
 
 export default function PostCard({post, onLike, onComment}: Props) {
   return (
-    <div className="flex gap-3 p-4 border-b border-gray-200 dark:border-gray-700 transition dark:bg-gray-800">
+    <div
+      id={`post-${post.id}`}
+      className="flex gap-3 p-4 border-b border-gray-200 dark:border-gray-700 transition dark:bg-gray-800"
+    >
       <Image
         src={post.avatar}
         alt={post.username}
@@ -31,12 +35,12 @@ export default function PostCard({post, onLike, onComment}: Props) {
         </p>
 
         <div className="flex gap-6 mt-3 text-gray-500 text-sm">
-          <button
+          <Button
             className="hover:text-red-500 transition flex items-center gap-1"
             onClick={() => onLike(post.id)}
           >
             ❤️ <span>{post.likes}</span>
-          </button>
+          </Button>
 
           <div className="flex items-center gap-1">
             💬 <span>{countComments(post.comments)}</span>
