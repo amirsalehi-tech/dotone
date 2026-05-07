@@ -8,7 +8,7 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 function Button({children, className = "", ...props}: ButtonProps) {
   return (
     <button
-      className={`inline-flex justify-center items-center focus:outline-none font-medium cursor-pointer ${className}`}
+      className={`inline-flex tranition duration-300 justify-center items-center focus:outline-none font-medium cursor-pointer ${className}`}
       {...props}
     >
       {children}

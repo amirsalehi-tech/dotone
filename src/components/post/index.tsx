@@ -4,6 +4,7 @@ import {Post} from "@/src/types/post";
 import Image from "next/image";
 import CommentSection from "../comment";
 import {renderTextWithMentions} from "@/src/utils/helpers";
+import {countComments} from "@/src/utils/commentCount";
 
 interface Props {
   post: Post;
@@ -13,22 +14,23 @@ interface Props {
 
 export default function PostCard({post, onLike, onComment}: Props) {
   return (
-    <div className="flex gap-3 p-4 border-b dark:border-b-white-50  transition dark:bg-gray-800">
+    <div className="flex gap-3 p-4 border-b border-gray-200 dark:border-gray-700 transition dark:bg-gray-800">
       <Image
         src={post.avatar}
         alt={post.username}
         width={80}
         height={80}
-        className="w-20 h-20 rounded-full object-cover border-2 border-blue-600 sm:mb-0 sm:mr-6"
+        className="w-20 h-20 rounded-full object-cover border-2 border-blue-600"
       />
 
-      <div className="flex-1 max-w-full">
+      <div className="flex-1 min-w-0 max-w-full">
         <div className="font-semibold">{post.username}</div>
 
-        <p className="mt-1 whitespace-pre-wrap wrap-break-words break-all w-full">
+        <p className="mt-1 whitespace-pre-wrap wrap-break-word">
           {renderTextWithMentions(post.content)}
         </p>
-        <div className="flex gap-6 mt-2 text-gray-500 text-sm">
+
+        <div className="flex gap-6 mt-3 text-gray-500 text-sm">
           <button
             className="hover:text-red-500 transition flex items-center gap-1"
             onClick={() => onLike(post.id)}
@@ -37,7 +39,7 @@ export default function PostCard({post, onLike, onComment}: Props) {
           </button>
 
           <div className="flex items-center gap-1">
-            💬 <span>{post.comments.length}</span>
+            💬 <span>{countComments(post.comments)}</span>
           </div>
         </div>
 

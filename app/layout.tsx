@@ -2,7 +2,7 @@ import ThemeProvider from "@/src/context/ThemeProvider";
 import "./globals.css";
 
 export const metadata = {
-  title: "X Social Feed",
+  title: "dotone",
   description: "Twitter/X-style social feed",
 };
 

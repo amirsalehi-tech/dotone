@@ -1,5 +1,5 @@
 import {Post} from "@/src/types/post";
-import PostCard from "../post/PostCard";
+import PostCard from "../post";
 
 interface Props {
   posts: Post[];

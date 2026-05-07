@@ -35,7 +35,7 @@ export default function CommentInput({onSubmit, replyUsername}: Props) {
       <input
         ref={inputRef}
         placeholder={replyUsername ? "Write your reply..." : "Post your reply"}
-        className="w-full rounded-full bg-gray-100 dark:bg-gray-800 px-4 py-2 text-sm
+        className="w-full rounded-full bg-gray-100 dark:bg-gray-700 px-4 py-2 text-sm
                    focus:ring-2 focus:ring-blue-500/40 outline-none"
       />
 

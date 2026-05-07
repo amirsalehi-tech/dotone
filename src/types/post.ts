@@ -2,7 +2,7 @@ export interface Comment {
   id: string;
   username: string;
   content: string;
-  replies?: Comment[];
+  replies: Comment[];
 }
 
 export interface Post {
