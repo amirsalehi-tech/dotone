@@ -1,7 +1,7 @@
 "use client";
 
 import {useRef} from "react";
-import PostComposer from "@/src/components/composer/PostComposer";
+import PostComposer from "@/src/components/composer";
 import Feed from "@/src/components/feed";
 import Header from "@/src/components/header";
 import {usePosts} from "@/src/hooks/usePosts";

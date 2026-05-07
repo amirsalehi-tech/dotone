@@ -3,7 +3,7 @@
 import {useTheme} from "@/src/hooks/useTheme";
 import {Search, Sun, Moon} from "lucide-react";
 import Image from "next/image";
-import NotificationBell from "../notification/Notification";
+import NotificationBell from "../notification";
 
 export default function Header() {
   const {theme, toggleTheme} = useTheme();
