@@ -1,5 +1,5 @@
 "use client";
-import {createContext, useState, useEffect, ReactNode} from "react";
+import {createContext, useState, ReactNode} from "react";
 
 type Theme = "light" | "dark";
 
@@ -17,11 +17,7 @@ interface ThemeProviderProps {
 }
 
 export default function ThemeProvider({children}: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>("dark");
-
-  useEffect(() => {
-    document.documentElement.classList.add("dark");
-  }, []);
+  const [theme, setTheme] = useState<Theme>("light");
 
   const toggleTheme = () => {
     setTheme((prev) => {

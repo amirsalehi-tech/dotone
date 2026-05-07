@@ -1,7 +1,8 @@
 import {useState} from "react";
 import {v4 as uuid} from "uuid";
-import {Post} from "../types/post";
+
 import {mockPosts} from "../data/mockPosts";
+import {Post, Comment} from "../types/post";
 
 export function usePosts() {
   const [posts, setPosts] = useState<Post[]>(mockPosts);
@@ -34,53 +35,56 @@ export function usePosts() {
     );
   };
 
-  const addComment = (postId: string, text: string) => {
+  const insertReply = (
+    comments: Comment[],
+    parentId: string,
+    newComment: Comment,
+  ): Comment[] => {
+    return comments.map((comment) => {
+      if (comment.id === parentId) {
+        return {
+          ...comment,
+          replies: [...(comment.replies || []), newComment],
+        };
+      }
+
+      if (comment.replies?.length) {
+        return {
+          ...comment,
+          replies: insertReply(comment.replies, parentId, newComment),
+        };
+      }
+
+      return comment;
+    });
+  };
+
+  const addComment = (postId: string, text: string, parentId?: string) => {
+    const newComment: Comment = {
+      id: crypto.randomUUID(),
+      username: "johndoe",
+      content: text,
+      replies: [],
+    };
+
     setPosts((prev) =>
-      prev.map((p) =>
-        p.id === postId
-          ? {
-              ...p,
-              comments: [
-                ...p.comments,
-                {
-                  id: uuid(),
-                  username: "you",
-                  content: text,
-                  replies: [],
-                },
-              ],
-            }
-          : p,
-      ),
+      prev.map((post) => {
+        if (post.id !== postId) return post;
+
+        if (!parentId) {
+          return {
+            ...post,
+            comments: [...post.comments, newComment],
+          };
+        }
+
+        return {
+          ...post,
+          comments: insertReply(post.comments, parentId, newComment),
+        };
+      }),
     );
   };
 
-  const addReply = (postId: string, commentId: string, text: string) => {
-    setPosts((prev) =>
-      prev.map((post) =>
-        post.id === postId
-          ? {
-              ...post,
-              comments: post.comments.map((comment) =>
-                comment.id === commentId
-                  ? {
-                      ...comment,
-                      replies: [
-                        ...comment.replies,
-                        {
-                          id: uuid(),
-                          username: "you",
-                          content: text,
-                        },
-                      ],
-                    }
-                  : comment,
-              ),
-            }
-          : post,
-      ),
-    );
-  };
-
-  return {posts, addPost, toggleLike, addComment, addReply};
+  return {posts, addPost, toggleLike, addComment};
 }

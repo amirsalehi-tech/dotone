@@ -2,13 +2,13 @@
 
 import {Post} from "@/src/types/post";
 import Image from "next/image";
-import CommentSection from "./CommentSection";
+import CommentSection from "../comment";
 import {renderTextWithMentions} from "@/src/utils/helpers";
 
 interface Props {
   post: Post;
   onLike: (id: string) => void;
-  onComment: (postId: string, text: string) => void;
+  onComment: (postId: string, text: string, parentId?: string) => void;
 }
 
 export default function PostCard({post, onLike, onComment}: Props) {
@@ -43,7 +43,7 @@ export default function PostCard({post, onLike, onComment}: Props) {
 
         <CommentSection
           comments={post.comments}
-          onAddComment={(text) => onComment(post.id, text)}
+          onAddComment={(text, parentId) => onComment(post.id, text, parentId)}
         />
       </div>
     </div>

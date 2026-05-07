@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import {useState} from "react";
+import Button from "../ui/button/Button";
 
 interface Props {
   onPost: (content: string) => void;
@@ -54,14 +55,13 @@ export default function PostComposer({onPost}: Props) {
           <span className="text-xs text-gray-500">
             {text.length}/{MAX_CHARS}
           </span>
-
-          <button
+          <Button
             disabled={!text.trim()}
             onClick={handleSubmit}
-            className="bg-blue-500 hover:bg-blue-600 transition text-white px-4 py-1.5 rounded-full disabled:opacity-40"
+            className="bg-blue-500 hover:bg-blue-600 transition text-white px-4 py-1.5 rounded-full disabled:opacity-40 cursor-pointer"
           >
             Post
-          </button>
+          </Button>
         </div>
       </div>
     </div>

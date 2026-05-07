@@ -2,17 +2,15 @@
 
 import {useRef} from "react";
 import PostComposer from "@/src/components/composer/PostComposer";
-import Feed from "@/src/components/feed/Feed";
-import Header from "@/src/components/header/Header";
+import Feed from "@/src/components/feed";
+import Header from "@/src/components/header";
 import {usePosts} from "@/src/hooks/usePosts";
 
 export default function Home() {
   const {posts, addPost, toggleLike, addComment} = usePosts();
 
-  // Ref for the scrollable feed container
   const feedRef = useRef<HTMLDivElement>(null);
 
-  // Smooth scroll to top after posting
   const scrollFeedToTop = () => {
     if (feedRef.current) {
       feedRef.current.scrollTo({
@@ -24,7 +22,7 @@ export default function Home() {
 
   return (
     <main className="h-screen bg-gray-50 dark:bg-gray-900 dark:text-gray-200">
-      <div className="mx-auto max-w-2xl border-x border-gray-200 bg-white h-full flex flex-col">
+      <div className="mx-auto max-w-2xl border-x border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 h-full flex flex-col">
         {/* Header */}
         <Header />
 
