@@ -2,6 +2,7 @@
 
 import {useState, useRef} from "react";
 import {Comment} from "../../types/post";
+import {renderTextWithMentions} from "@/src/utils/helpers";
 
 interface Props {
   comments: Comment[];
@@ -27,7 +28,7 @@ export default function CommentSection({comments, onAddComment}: Props) {
   const handleLike = (id: string) => {
     setLocalLikes((prev) => ({
       ...prev,
-      [id]: (prev[id] || 0) + 1,
+      [id]: prev[id] ? prev[id] - 1 : 1,
     }));
   };
 
@@ -47,7 +48,7 @@ export default function CommentSection({comments, onAddComment}: Props) {
           <div key={c.id} className="text-sm">
             <div>
               <span className="font-semibold mr-1">{c.username}</span>
-              <span>{c.content}</span>
+              <span>{renderTextWithMentions(c.content)}</span>
             </div>
 
             <div className="flex gap-3 mt-1 text-xs text-gray-500">

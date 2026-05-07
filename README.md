@@ -67,5 +67,3 @@ Built as a high‑quality front‑end showcase with senior‑level attention to 
   - **React Query (TanStack Query)** for server-side data
 
 ---
-
-## 📁 Project Structure
