@@ -32,7 +32,7 @@ export default function PostComposer({onPost}: Props) {
         alt="User avatar"
         width={40}
         height={40}
-        className="w-20 h-20 rounded-full object-cover border-2 border-blue-600 sm:mb-0 sm:mr-6"
+        className="w-20 h-20 rounded-full object-cover border-2 border-blue-600"
       />
 
       <div className="flex-1">

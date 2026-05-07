@@ -4,6 +4,7 @@ import {useTheme} from "@/src/hooks/useTheme";
 import {Search, Sun, Moon} from "lucide-react";
 import Image from "next/image";
 import NotificationBell from "../notification";
+import Button from "../ui/button/Button";
 
 export default function Header() {
   const {theme, toggleTheme} = useTheme();
@@ -20,15 +21,15 @@ export default function Header() {
 
       <div className="flex items-center gap-2">
         {/* Search */}
-        <button className="rounded-full p-2 text-gray-500 dark:text-gray-300 transition hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer">
+        <Button className="rounded-full p-2 text-gray-500 dark:text-gray-300 transition hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer">
           <Search className="h-5 w-5" />
-        </button>
+        </Button>
 
         {/* Notifications */}
         <NotificationBell />
 
         {/* Theme toggle */}
-        <button
+        <Button
           onClick={toggleTheme}
           className="rounded-full p-2 text-gray-500 dark:text-gray-300 transition hover:bg-blue-50 dark:hover:bg-gray-800 cursor-pointer"
         >
@@ -37,7 +38,7 @@ export default function Header() {
           ) : (
             <Sun className="h-5 w-5" />
           )}
-        </button>
+        </Button>
       </div>
     </header>
   );
