@@ -1,7 +1,12 @@
-# X-Style Social Feed (Next.js + TypeScript + Tailwind)
+# X-Style Social Feed
 
-Twitter/X-style social feed built with **Next.js**, **TypeScript**, and **Tailwind CSS**.
+A Twitter/X‑inspired social feed built with **Next.js**, **TypeScript**, and **Tailwind CSS**.
 
-for setup clone this project run npm install, then npm run dev
+## Getting Started
 
----
+Clone the project, install dependencies, and run the dev server:
+
+```bash
+npm install
+npm run dev
+```
