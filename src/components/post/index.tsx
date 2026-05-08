@@ -6,6 +6,8 @@ import CommentSection from "../comment";
 import {renderTextWithMentions} from "@/src/utils/helpers";
 import {countComments} from "@/src/utils/commentCount";
 import Button from "../ui/button/Button";
+import {useState} from "react";
+import {Heart, MessageCircle} from "lucide-react";
 
 interface Props {
   post: Post;
@@ -14,6 +16,14 @@ interface Props {
 }
 
 export default function PostCard({post, onLike, onComment}: Props) {
+  const [animating, setAnimating] = useState(false);
+
+  const handleLike = () => {
+    setAnimating(true);
+    onLike(post.id);
+    setTimeout(() => setAnimating(false), 200);
+  };
+
   return (
     <div
       id={`post-${post.id}`}
@@ -34,16 +44,27 @@ export default function PostCard({post, onLike, onComment}: Props) {
           {renderTextWithMentions(post.content)}
         </p>
 
-        <div className="flex gap-6 mt-3 text-gray-500 text-sm">
+        <div className="flex gap-6 mt-3 text-gray-500 text-sm items-center">
+          {/* Like */}
           <Button
-            className="hover:text-red-500 transition flex items-center gap-1"
-            onClick={() => onLike(post.id)}
+            className="flex items-center gap-1 hover:text-red-500 transition"
+            onClick={handleLike}
           >
-            ❤️ <span>{post.likes}</span>
+            <Heart
+              size={18}
+              className={`
+                transition-all
+                ${post.liked ? "fill-red-500 text-red-500" : ""}
+                ${animating ? "scale-125" : "scale-100"}
+              `}
+            />
+            <span>{post.likes}</span>
           </Button>
 
+          {/* Comments */}
           <div className="flex items-center gap-1">
-            💬 <span>{countComments(post.comments)}</span>
+            <MessageCircle size={18} />
+            <span>{countComments(post.comments)}</span>
           </div>
         </div>
 

@@ -7,6 +7,7 @@ import {Post, Comment} from "../types/post";
 export function usePosts() {
   const [posts, setPosts] = useState<Post[]>(mockPosts);
 
+  // -- Add new post ----------------------------------------------------------
   const addPost = (content: string) => {
     const newPost: Post = {
       id: uuid(),
@@ -21,6 +22,7 @@ export function usePosts() {
     setPosts((prev) => [newPost, ...prev]);
   };
 
+  // -- Toggle like on posts --------------------------------------------------
   const toggleLike = (id: string) => {
     setPosts((prev) =>
       prev.map((p) =>
@@ -35,6 +37,7 @@ export function usePosts() {
     );
   };
 
+  // -- Recursive reply inserter ----------------------------------------------
   const insertReply = (
     comments: Comment[],
     parentId: string,
@@ -44,11 +47,11 @@ export function usePosts() {
       if (comment.id === parentId) {
         return {
           ...comment,
-          replies: [...(comment.replies || []), newComment],
+          replies: [...comment.replies, newComment],
         };
       }
 
-      if (comment.replies?.length) {
+      if (comment.replies.length > 0) {
         return {
           ...comment,
           replies: insertReply(comment.replies, parentId, newComment),
@@ -59,11 +62,13 @@ export function usePosts() {
     });
   };
 
+  // -- Add comment or reply ---------------------------------------------------
   const addComment = (postId: string, text: string, parentId?: string) => {
     const newComment: Comment = {
       id: crypto.randomUUID(),
       username: "johndoe",
       content: text,
+      likes: 0,
       replies: [],
     };
 
@@ -71,6 +76,7 @@ export function usePosts() {
       prev.map((post) => {
         if (post.id !== postId) return post;
 
+        // Top-level comment
         if (!parentId) {
           return {
             ...post,
@@ -78,6 +84,7 @@ export function usePosts() {
           };
         }
 
+        // Nested reply
         return {
           ...post,
           comments: insertReply(post.comments, parentId, newComment),
