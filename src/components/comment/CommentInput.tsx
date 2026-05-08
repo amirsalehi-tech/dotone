@@ -30,10 +30,17 @@ export default function CommentInput({onSubmit, replyUsername}: Props) {
     }
   };
 
+  const handleBlur = () => {
+    if (!replyUsername && inputRef.current) {
+      inputRef.current.value = "";
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <input
         ref={inputRef}
+        onBlur={handleBlur}
         placeholder={replyUsername ? "Write your reply..." : "Post your reply"}
         className="w-full rounded-full bg-gray-100 dark:bg-gray-700 px-4 py-2 text-sm focus:ring-2 focus:ring-blue-500/40 outline-none"
       />
