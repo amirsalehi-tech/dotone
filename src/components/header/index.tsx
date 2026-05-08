@@ -11,13 +11,15 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-20 flex items-center justify-between px-4 py-3 bg-white/80 dark:bg-gray-800 backdrop-blur border-b shadow-md">
-      <Image
-        src="/images/logo.svg"
-        alt="App Logo"
-        width={64}
-        height={64}
-        priority
-      />
+      <div className="relative h-12 w-12">
+        <Image
+          src="/images/logo.svg"
+          alt="App Logo"
+          fill
+          priority
+          className="object-contain"
+        />
+      </div>
 
       <div className="flex items-center gap-2">
         {/* Search */}
