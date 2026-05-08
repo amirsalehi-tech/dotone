@@ -3,45 +3,8 @@
 import {useEffect, useRef, useState} from "react";
 import {Bell, Heart, MessageCircle, UserPlus} from "lucide-react";
 import Button from "../ui/button/Button";
-
-type Notification = {
-  id: number;
-  type: "like" | "reply" | "follow";
-  text: string;
-  read: boolean;
-  targetId: string;
-};
-
-const initialNotifications: Notification[] = [
-  {
-    id: 1,
-    type: "like",
-    text: "Alice liked JohnDoe's post",
-    read: false,
-    targetId: "post-1",
-  },
-  {
-    id: 2,
-    type: "reply",
-    text: "Maria replied to a comment",
-    read: false,
-    targetId: "comment-c3",
-  },
-  {
-    id: 3,
-    type: "reply",
-    text: "David replied in a thread",
-    read: false,
-    targetId: "reply-r7",
-  },
-  {
-    id: 4,
-    type: "follow",
-    text: "Sophia started following you",
-    read: true,
-    targetId: "post-5",
-  },
-];
+import type {Notification} from "@/src/types/notification";
+import { initialNotifications } from "@/src/data/mockNotification";
 
 export default function NotificationBell() {
   const [open, setOpen] = useState(false);
