@@ -17,6 +17,7 @@ export default function CommentSection({comments, onAddComment}: Props) {
 
   const {
     localLikes,
+    likedComments,
     replyTargetId,
     replyUsername,
     setReplyTargetId,
@@ -31,6 +32,7 @@ export default function CommentSection({comments, onAddComment}: Props) {
       <div className="space-y-4">
         {visibleComments.map((comment) => (
           <CommentItem
+            likedComments={likedComments}
             key={comment.id}
             comment={comment}
             localLikes={localLikes}
